@@ -1,17 +1,19 @@
-version: "3"
-
 services:
   redis:
-    image: redis:6.2
+    image: redislabs/redismod
     ports:
       - '6379:6379'
+    command: --requirepass ${REDIS_PASSWORD}
 
   web:
     build: .
     stop_signal: SIGINT
     ports:
-      - '4000:80'
+      - '4000:80'  # Browser will access via localhost:4000
     volumes:
       - ./app:/app
     depends_on:
       - redis
+    environment:
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_HOST=${REDIS_HOST}
