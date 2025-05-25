@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()  # Load env variables from .env
 
 cache = redis.Redis(
-    host="redis",
+    host=os.getenv('REDIS_HOST', 'srv-captain--redis'),
     port=6379,
     password=os.getenv('REDIS_PASSWORD')
 )
