@@ -1,10 +1,10 @@
-import time
-import redis
-from flask import Flask, render_template
 import os
+import redis
+import time
+from flask import Flask, render_template
 from dotenv import load_dotenv
 
-load_dotenv()  # Load env variables from .env
+load_dotenv()  # load .env locally (optional)
 
 cache = redis.Redis(
     host=os.getenv('REDIS_HOST', 'srv-captain--redis'),
@@ -33,14 +33,9 @@ def hello():
 @app.route('/titanic')
 def titanic():
     import pandas as pd
-    df = pd.read_csv('static/titanic.csv')
+    df = pd.read_csv('static/titanic.csv')  # ensure static folder and file are lowercase and present
     table_html = df.head().to_html(classes='data', header="true")
-
-
-
     return render_template('titanic.html', table=table_html)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
-
-
