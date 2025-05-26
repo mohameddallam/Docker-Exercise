@@ -1,4 +1,9 @@
 Flask
+<<<<<<< HEAD
 redis
 python-dotenv
 pandas
+=======
+Redis
+python-dotenv
+>>>>>>> 1673cbea3e70b9ac13e44eac91b1d9f39a1c72a8
