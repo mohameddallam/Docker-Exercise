@@ -36,7 +36,6 @@ def get_hit_count():
 @app.route('/')
 def hello():
     count = get_hit_count()
-<<<<<<< HEAD
     return render_template('hello.html', name="BIPM", count=count)
 
 import os
@@ -46,15 +45,12 @@ def titanic():
     import pandas as pd
 
     base_dir = os.path.abspath(os.path.dirname(__file__))
-    csv_path = os.path.join(base_dir, 'static', 'titanic.csv')
+    csv_path = os.path.join(base_dir, 'titanic.csv')
 
     df = pd.read_csv(csv_path)
     table_html = df.head().to_html(classes='data', header="true")
 
     return render_template('titanic.html', table=table_html)
-=======
-    return render_template('hello.html', name= "BIPM", count = count)
->>>>>>> 1673cbea3e70b9ac13e44eac91b1d9f39a1c72a8
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80, debug=True)
