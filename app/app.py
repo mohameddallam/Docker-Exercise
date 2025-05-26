@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import redis
 import time
@@ -13,13 +12,6 @@ cache = redis.Redis(
     password=os.getenv('REDIS_PASSWORD')
 )
 
-=======
-import time
-import redis
-from flask import Flask, render_template
-
-cache = redis.Redis(host='redis', port=6379)
->>>>>>> 1673cbea3e70b9ac13e44eac91b1d9f39a1c72a8
 app = Flask(__name__)
 
 def get_hit_count():
