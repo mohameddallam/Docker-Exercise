@@ -30,11 +30,18 @@ def hello():
     count = get_hit_count()
     return render_template('hello.html', name="BIPM", count=count)
 
+import os
+
 @app.route('/titanic')
 def titanic():
     import pandas as pd
-    df = pd.read_csv('static/titanic.csv')  # ensure static folder and file are lowercase and present
+
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    csv_path = os.path.join(base_dir, 'static', 'titanic.csv')
+
+    df = pd.read_csv(csv_path)
     table_html = df.head().to_html(classes='data', header="true")
+
     return render_template('titanic.html', table=table_html)
 
 if __name__ == "__main__":
